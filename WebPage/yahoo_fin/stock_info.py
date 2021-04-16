@@ -106,7 +106,7 @@ def get_data(ticker, start_date=None, end_date=None, index_as_date=True,
 
     # build and connect to URL
     site, headers, params = build_url(ticker, start_date, end_date, interval)
-    resp = requests.get(site, headers=headers, params=params)
+    resp = requests.get(site, headers=headers, params=params, timeout=(10.0, 10.0))
 
     if not resp.ok:
         raise AssertionError(resp.json())

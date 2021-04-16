@@ -5,11 +5,12 @@ from datetime import timedelta
 import os
 
 def GetDailyDataFromTicker(ticker, pbar):
-    pbar.update(1)
     todayDate = date.today()
     lookBack = timedelta(days=5000)
-    return si.get_data(ticker, start_date=todayDate-lookBack, end_date=todayDate, 
-                       interval='1d', index_as_date=False)
+    data =  si.get_data(ticker, start_date=todayDate-lookBack, end_date=todayDate, 
+                        interval='1d', index_as_date=False)
+    pbar.update(1)
+    return data
 
 def GetDailyData(tickers):
     pbar = tqdm(total=len(tickers))
@@ -18,11 +19,15 @@ def GetDailyData(tickers):
         os.makedirs('static/sp500')
 
     for i in range(len(tickers)):
-        try:
-            data =  GetDailyDataFromTicker(tickers[i], pbar)
-        except:
-            print("Server did not respond correctly to request of ticker " + tickers[i])
-            continue
+        success = False
+        
+        while not success:
+            try:
+                data =  GetDailyDataFromTicker(tickers[i], pbar)
+                success = True
+            except:
+                print("Server did not respond correctly to request of ticker " + tickers[i])
+                print("Trying again")
 
         f = open('static/sp500/' + tickers[i] + ".csv", "w+")
         if not data.empty:
