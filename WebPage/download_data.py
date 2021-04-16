@@ -36,7 +36,7 @@ tickers = ["AAL","AAP","AAPL","ABBV","ABC","ABMD","ABT","ACN","A","ADBE","ADI","
            "QRVO","RCL","RE","REG","REGN","RF","RHI","RJF","RL","RMD","ROK","ROL","ROP","ROST",
            "RSG","RTX","SBAC","SBUX","SCHW","SEE","SHW","SIVB","SJM","SLB","SLG","SNA","SNPS",
            "SO","SPG","SPGI","SRE","STE","STT","STX","STZ","SWK","SWKS","SYF","SYK","SYY","TAP",
-           "T","TDG","TDY","TEL","TER","TFC","TFX","TGT","TIF","TJX","TMO","TMUS","TPR","TROW",
+           "T","TDG","TDY","TEL","TER","TFC","TFX","TGT", "TJX","TMO","TMUS","TPR","TROW",
            "TRV","TSCO","TSN","TT","TTWO","TWTR","TXN","TXT","TYL","VAR","VFC","VIAC","VLO","VMC",
            "VNO","VRSK","VRSN","VRTX","VTR","VTRS","VZ","WAB","WAT","WBA","WDC","WEC","WELL",
            "WFC","WHR","WLTW","WMB","WM","WMT","WRB","WST","WU","WY","WYNN","XEL","XLNX",
@@ -54,8 +54,8 @@ def get_daily_data_from_ticker(ticker):
                        interval='1d', index_as_date=False)
 
 
-if not os.path.exists('SP500'):
-    os.makedirs('SP500')
+if not os.path.exists('static/sp500'):
+    os.makedirs('static/sp500')
 
 for i in range(len(tickers)):
     try:
@@ -64,7 +64,7 @@ for i in range(len(tickers)):
         print("Server did not respond correctly to request of ticker " + tickers[i])
         continue
 
-    f = open('SP500/' + tickers[i] + ".csv", "w+")
+    f = open('static/sp500' + tickers[i] + ".csv", "w+")
     if not data.empty:
         f.write(data.drop(columns=['ticker']).to_csv(index=False))
     else:

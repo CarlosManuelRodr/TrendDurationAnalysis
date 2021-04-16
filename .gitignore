@@ -1,3 +1,7 @@
+# Unwanted directories in this project
+WebPage/static/modelresults/
+WebPage/static/sp500/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
