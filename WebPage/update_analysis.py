@@ -39,7 +39,7 @@ tickers = ["AAL","AAP","AAPL","ABBV","ABC","ABMD","ABT","ACN","A","ADBE","ADI","
            "WFC","WHR","WLTW","WMB","WM","WMT","WRB","WST","WU","WY","WYNN","XEL","XLNX",
            "XOM","XRAY","XRX","XYL","YUM","ZBH","ZBRA","ZION","ZTS"]
 
-if __name__ == "__main__":
+def UpdateAnalysis():
     print("Downloading tickers...")
     GetDailyData(tickers)
     print("Done!")
@@ -47,3 +47,6 @@ if __name__ == "__main__":
     print("Starting to generate reports...")
     GenerateAllReports(tickers)
     print("Done!")
+
+if __name__ == "__main__":
+    UpdateAnalysis()

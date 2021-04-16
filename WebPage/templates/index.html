@@ -16,7 +16,12 @@
             </nav>
         </header>
         <h2>Descripción</h2>
-        <p> Descripción del análisis</p>
+        <p>Este análisis se basa en el hecho de que de acuerdo con la hipótesis del mercado eficiente (HME), es posible diseñar una prueba estadística para distinguir si una serie de precios de un stock se comporta de acuerdo a la HME. La evidencia sugiere que durante los periodos no eficientes es posible obtener retornos con un valor esperado positivo, en contraste con los periodos eficientes cuyo valor esperado se encuentra alrededor de cero. Como ejemplo, en la figura se muestra el retorno promedio para acciones del S&amp;P500 separados en retornos de fechas eficientes y no eficientes.&nbsp; &nbsp; &nbsp;&nbsp;</p>
+
+        <img src="static/img/returns_by_efficiency.png" style="width: 60%"/>
+
+        <p>Los detalles acerca del modelo usado para estimar la eficiencia se pueden encontrar en el Whitepaper. Esto no es consejo financiero, lo comparto esperando que pueda ser de utilidad para mejorar sus rendimientos de trading.&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+
         <h2>Análisis</h2>
         <form class="form-inline" method="POST" action="{{ url_for('calculate') }}">
             <div class="form-group">

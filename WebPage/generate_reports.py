@@ -2,7 +2,6 @@ import pandas
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-import matplotlib.patches as mpatches
 import matplotlib.lines as mlines
 import more_itertools as mit
 import datetime
@@ -37,7 +36,7 @@ def ModelP(j):
     return modelP
 
 def PEstimator(trendDurations, j):
-    return trendDurations.count(j)/len(testData)
+    return trendDurations.count(j)/len(trendDurations)
 
 def Z(trendDurations, j):
     n = len(trendDurations)

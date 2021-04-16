@@ -1,4 +1,5 @@
 import pandas
+import os
 from flask import Flask, escape, request, render_template
 
 app = Flask(__name__)
@@ -42,6 +43,19 @@ tickers = ["AAL","AAP","AAPL","ABBV","ABC","ABMD","ABT","ACN","A","ADBE","ADI","
            "XOM","XRAY","XRX","XYL","YUM","ZBH","ZBRA","ZION","ZTS"]
 
 tickers.sort()
+
+# Check if there is already a dataset
+if not os.path.exists('static/sp500') and not os.path.exists('static/modelresults'):
+    from download_data import GetDailyData
+    from generate_reports import GenerateAllReports
+    print("Downloading tickers...")
+    GetDailyData(tickers)
+    print("Done!")
+
+    print("Starting to generate reports...")
+    GenerateAllReports(tickers)
+    print("Done!")
+    print("Starting server...")
 
 # Auxiliary
 def get_ticker_plot_path(ticker):
