@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Analizador de modelo geométrico en mercados financieros</title>
+        <link href="{{ url_for('static',filename='styles/main.css') }}" type= "text/css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <h1>Analizador de modelo geométrico en mercados financieros&nbsp; &nbsp; &nbsp;&nbsp;</h1>
+                <ul>
+                  <li><a href="https://arxiv.org/abs/1211.3060">Whitepaper</a></li>
+                  <li><a href="https://github.com/CarlosManuelRodr">Acerca de</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h2>Descripción</h2>
+        <p>Este análisis se basa en el hecho de que de acuerdo con la hipótesis del mercado eficiente (HME), es posible diseñar una prueba estadística para distinguir si la duración de una serie de precios de un stock se comporta de acuerdo a un modelo geométrico.&nbsp; &nbsp; &nbsp;&nbsp;</p>
+
+        <img src="static/img/returns_by_efficiency.png" style="width: 60%"/>
+
+        <p>Los detalles acerca del modelo usado para estimar la eficiencia se pueden encontrar en el artículo correspondiente.&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+
+        <h2>Análisis</h2>
+        <form class="form-inline" method="POST" action="{{ url_for('calculate') }}">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">Selecciona un stock</span>
+                        <select name="stock_select" class="selectpicker form-control">
+                            {% for stock in tickers %}
+                                <option value="{{stock}}">{{stock}}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+                <button type="submit" class="btn btn-default">Analizar</button>
+            </div>
+        </form>
+        <br>
+        <footer>©2021 Carlos Manuel Rodríguez Martínez</footer>
+    </body>
+</html>
